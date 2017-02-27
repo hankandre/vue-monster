@@ -11,6 +11,8 @@ new Vue({
     monster: 'monster'
   },
   methods: {
+    // Launches the attack. Simply returns if the user's or monster's health is 0. If not, it causes damage to each
+    // and pushes the new health to the healths array for rendering.
     attack: function () {
       let vm = this
       if (vm.monsterHealth === 0 || vm.myHealth === 0) return
@@ -23,6 +25,7 @@ new Vue({
         "The Monster's health is": vm.monsterHealth
       })
     },
+    // Resets the game.
     newGame: function () {
       this.myHealth = 100
       this.monsterHealth = 100
@@ -30,6 +33,8 @@ new Vue({
       this.healths = []
       return this.lunged = false
     },
+    // Launches the user's special attack. A conditional exists to prevent the user from launching it more
+    // than once.
     specialAttack: function () {
       let vm = this
       if (!vm.lunged) {
@@ -44,6 +49,8 @@ new Vue({
         return
       }
     },
+    // Heals user. The user has health added although it's still possible that the Monster's damage exceeds the healing amount.
+    // The healths are then pushed to the healths array for rendering.
     heal: function () {
       let vm = this
       vm.myHealth += Math.round(Math.random() * 12)
@@ -57,6 +64,8 @@ new Vue({
   }
 })
 
+
+// A reusable function to calculate damage
 function damage (health) {
   return health -= Math.round(Math.random() * 10)
 }
