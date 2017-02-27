@@ -64,7 +64,6 @@ new Vue({
   }
 })
 
-
 // A reusable function to calculate damage
 function damage (health) {
   return health -= Math.round(Math.random() * 10)
