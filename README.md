@@ -9,6 +9,7 @@ of things are getting re-rendered with my current approach. At one point I consi
 order to reset the game if `gameStart` boolean was set to true. For instance:
 
 ```js
+// app.js
 new Vue({
   data: {
     gameStart: false,
@@ -25,5 +26,10 @@ new Vue({
     }
   }
 })
+```
+
+```html
+<!-- index.html -->
+<button @click="gameStart = !gameStart">Restart</button>
 ```
 This solution seemed more DRY to me but I dislike `watch` methods due to their performance detriments so I reverted back to a `method`.
